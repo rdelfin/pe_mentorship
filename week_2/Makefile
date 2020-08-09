@@ -21,7 +21,7 @@ RM=/bin/rm
 
 PANDOC=/usr/bin/pandoc
 
-PANDOC_OPTIONS=--smart --standalone
+PANDOC_OPTIONS=-f markdown+smart --standalone --highlight=tango
 
 PANDOC_HTML_OPTIONS=--to html5
 PANDOC_PDF_OPTIONS=--variable mainfont="DejaVu Sans" \
@@ -29,7 +29,8 @@ PANDOC_PDF_OPTIONS=--variable mainfont="DejaVu Sans" \
 				   --variable monofont="DejaVu Sans Mono" \
 				   --variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" \
 				   --variable geometry:a4paper \
-				   --latex-engine=lualatex
+				   --pdf-engine=lualatex
+
 
 PANDOC_DOCX_OPTIONS=
 PANDOC_RTF_OPTIONS=

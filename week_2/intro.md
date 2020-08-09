@@ -46,5 +46,34 @@ to the files and memory that another program is using.
 
 These are all questions that an operating system tries to answer. Basically, it
 provides an abstraction layer for your programs to run on top of, as well as a lot of
-libraries, utilities, and common interfaces to do things like access hardware, box off
-running programs, 
+libraries, utilities, and common interfaces to do things like access hardware or other
+outside resources, box off running programs, and share data safely between them.
+
+### How does Linux provide these abstractions?
+
+This is what we'll be teasing in the next 10-ish weeks. There's a lot of different
+mechanisms for this, and every OS does this slightly differently, so we'll be focusing
+on Linux for this course. Note that most of these mechanisms generally apply to other
+OS' as well, but the specifics will refer to Linux.
+
+Linux is really compomposed of two parts; the kernel and the user-space abstractions.
+The kernel is the part that contains the meat of the OS. This is what performs all the
+privilaged operations. It's the one managing which programs to schedule when, what
+accesses hardware devices directly, and the one that manages things like memory, the
+filesystem, process management and "sandboxing", and most of the network stack. We'll
+dig further into these in later modules, but this diagram contains all the details:
+
+![Attribution: Shmuel Csaba Otto Traian, shared under the CC Attribution-Share Alike 3.0 Unported license](kernel_diagram.png)
+
+One key question that often I've seen a lot of candidates stumble with is, why couldn't
+you implement a program on the user-side that does all the operations of the kernel by
+itself? This is a question we'll be able to make clearer as we go on, but in summary,
+your CPU can run in different modes with different permissions, two of which are chosen
+as user and kernel mode. The later can interact with hardware directly, access the
+whole of memory, and change things like interrupts, scheduling and pre-empts, while the
+former can't. We'll talk about how that's actually implemented in later modules, but
+for now, keep that separation in mind.
+
+Ok, now let's jump to the exercises! This week's work is relatively light, we'll talk
+about how to move yourself around a Linux shell (using bash), and some of the basic
+concepts and commands you'll need.
