@@ -77,3 +77,8 @@ for now, keep that separation in mind.
 Ok, now let's jump to the exercises! This week's work is relatively light, we'll talk
 about how to move yourself around a Linux shell (using bash), and some of the basic
 concepts and commands you'll need.
+
+## What's next?
+
+Open `ex_1.pdf`, which will guide you through how to work with a Linux terminal. After
+you're done, go to `problems.pdf` for open-ended problems to discuss with your mentor!
