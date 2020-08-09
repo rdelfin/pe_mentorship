@@ -8,7 +8,7 @@ You can access it by running this docker command on your system (you should have
 installed by now):
 
 ```bash
-$ docker run -it pementorship/w1_ex1
+$ docker run -it pementorship/w2_ex1
 ```
 
 You should see a prompt like this:
