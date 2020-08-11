@@ -44,8 +44,9 @@ You might need to `docker pull` it first.
    file. Notice the first row is used to give each column a name. In this exercise
    you'll compute a lot of things based on this data, so it'll be a multi-parter:
    1. Look over the file. How many rows (excluding the header) does this contain? How
-      do you get and print this number in bash? (take a look at 3.2 if you need a
-      hint).
+      do you get and print this number in bash? **HINT**: Take a look at 3.2 for how to
+      count lines. You might also want to take a look at `tail` for how to exclude the
+      header. You'll need it for later.
    2. Next, how do you get bash to print out only the full names in the file? **HINT**:
       you'll need to make use of the `awk` program. Read the man page and search online
       for how it can help you in this task.
@@ -57,3 +58,10 @@ You might need to `docker pull` it first.
       this program fail?
    4. Now, using what you've just learned and pipes (`|`), compute the average height
       of the people on the file.
+   5. What's the most common first name in this dataset?
+   6. Are there any repeated full names? How do you find them?
+   7. How many unique first names are there in this dataset that start with the letter
+      A?
+   8. **EXTRA**: can you figure out what distribution I used to generate people's
+      heights? You might want to use something like numpy and matplotlib in python to
+      see the data.
