@@ -28,15 +28,19 @@ You might need to `docker pull` it first.
 3. **find words**: Many linux installations come with a file containing a (mostly) full
    english dictionary with no definitions. Basically, it's just a list of english
    words. It lives in the file `/usr/share/dict/words`. For this problem:
-   1. Obtain every single word with the ending "-tion" **HINT**: grep will be useful
-      here, with the `-E` flag. If you're not sure what to do, read `man grep`, and
-      take a look at [this](https://regexone.com/) tutorial on regular expresions, or
-      regexes. Trust me, they'll be useful in the future.
-   2. How many words contain the "-tion" ending in the dictionary? **HINT**: Use the
-      `wc` (short for word count) program. Read the man page to figure out how to get
-      line counts.
+   1. Obtain every single word with the ending "-tion"
+
+      **HINT**: grep will be useful here, with the `-E` flag. If you're not sure what
+      to do, read `man grep`, and take a look at [this](https://regexone.com/) tutorial
+      on regular expresions, or regexes. Trust me, they'll be useful in the future.
+
+   2. How many words contain the "-tion" ending in the dictionary?
+
+      **HINT**: Use the `wc` (short for word count) program. Read the man page to
+      figure out how to get line counts.
+
 4. **CSV madness**: We've provided you with a CSV in your home directory called
-   `heights.csv` (just `ls` when you log in and you'll see it). If you look at it with
+   `people.csv` (just `ls` when you log in and you'll see it). If you look at it with
    something like `less`, you'll see it's a large file with fake people's data. It
    contains their extremely precise height in cm, full name, and split out first and
    last names. CSV's are quite simple files. Imagine this as a massive table, where
@@ -44,12 +48,16 @@ You might need to `docker pull` it first.
    file. Notice the first row is used to give each column a name. In this exercise
    you'll compute a lot of things based on this data, so it'll be a multi-parter:
    1. Look over the file. How many rows (excluding the header) does this contain? How
-      do you get and print this number in bash? **HINT**: Take a look at 3.2 for how to
-      count lines. You might also want to take a look at `tail` for how to exclude the
-      header. You'll need it for later.
-   2. Next, how do you get bash to print out only the full names in the file? **HINT**:
-      you'll need to make use of the `awk` program. Read the man page and search online
-      for how it can help you in this task.
+      do you get and print this number in bash?
+
+      **HINT**: Take a look at 3.2 for how to count lines. You might also want to take
+      a look at `tail` for how to exclude the header. You'll need it for later.
+
+   2. Next, how do you get bash to print out only the full names in the file?
+
+      **HINT**: you'll need to make use of the `awk` program. Read the man page and
+      search online for how it can help you in this task.
+
    3. In the home directory we also provided a program called `avg.py` (feel free to
       read the code with `less`, it's a relatively simple piece of python). This
       computes the average of all the numbers you feed in from standard input. Test it
