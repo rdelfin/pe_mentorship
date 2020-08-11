@@ -1,5 +1,8 @@
 # Problems
 
+For these problems, bring your solutions and results with you to your sessions so you
+can discuss them with your mentor.
+
 ## Setup
 
 For these, use the image called `pementorship/w2_problems`. As a reminder, you just
@@ -32,3 +35,25 @@ You might need to `docker pull` it first.
    2. How many words contain the "-tion" ending in the dictionary? **HINT**: Use the
       `wc` (short for word count) program. Read the man page to figure out how to get
       line counts.
+4. **CSV madness**: We've provided you with a CSV in your home directory called
+   `heights.csv` (just `ls` when you log in and you'll see it). If you look at it with
+   something like `less`, you'll see it's a large file with fake people's data. It
+   contains their extremely precise height in cm, full name, and split out first and
+   last names. CSV's are quite simple files. Imagine this as a massive table, where
+   each column in a row is separated by commas, and the rows are each new line in the
+   file. Notice the first row is used to give each column a name. In this exercise
+   you'll compute a lot of things based on this data, so it'll be a multi-parter:
+   1. Look over the file. How many rows (excluding the header) does this contain? How
+      do you get and print this number in bash? (take a look at 3.2 if you need a
+      hint).
+   2. Next, how do you get bash to print out only the full names in the file? **HINT**:
+      you'll need to make use of the `awk` program. Read the man page and search online
+      for how it can help you in this task.
+   3. In the home directory we also provided a program called `avg.py` (feel free to
+      read the code with `less`, it's a relatively simple piece of python). This
+      computes the average of all the numbers you feed in from standard input. Test it
+      out by running `./avg.py`, typing one number in each line and pressing Ctrl+D
+      (for EOF) once you're done. Does it work as expected? With what edge cases does
+      this program fail?
+   4. Now, using what you've just learned and pipes (`|`), compute the average height
+      of the people on the file.
