@@ -2,7 +2,7 @@
 
 ## Getting Setup
 
-Let's start up a terminal on linux. We recommend you use the Docker images we've
+Let's start up a terminal on Linux. We recommend you use the Docker images we've
 provided. Specifically, the `pementorship/w1_ex1` image (the one for this exercise).
 You can access it by running this docker command on your system (you should have it
 installed by now):
@@ -27,9 +27,9 @@ You should see this:
 ```
 
 `pwd` is a command that shows you the present working directory (hence the name).
-Basically, every process (aka running program) has a directory (aka a folder) from
-which it's running. This can (and often is) different from where the executable for
-said program lives.
+Every process (aka running program) has a directory (aka a folder) from which it's
+running. This can (and often is) different from where the executable for said program
+lives.
 
 Now for a few more commands. Run `ls`:
 ```bash
@@ -57,18 +57,18 @@ Here, you can see the name of the file (or in this case, folder) to the very rig
 - `drwxr-xr-x`: This is the permissions of the file, and they specify who can act on
   the file in what ways.
   - The `d` tells us this is a folder (`d` for directory). If you see a `-` it means
-    it's a regular file. There's other leters for other file types.
-  - After that, there's three groups of three characters. Each group defines
+    it's a regular file. There are other letters for other file types.
+  - After that, there are three groups of three characters. Each group defines
     permissions for a different set of users: user, group, and global, or other,
-    permissions (abreviated u, g and o). Each one of these contain a Read, Write and
-    eXecute flag, which respecively tell you whether the given user can read, write or
-    execute the file. This last one is unique since execute can both refer to running
-    a file as an executable, or, if this is a directory, enter it.
+    permissions (abbreviated u, g, and o). Each one of these contains a Read, Write and
+    eXecute flag, which respectively tells you whether the given user can read, write
+    or execute the file. This last one is unique since "execute" can both refer to
+    running a file as an executable, or, if this is a directory, enter it.
 - `2`: the number of hard links to this file (we'll talk about this when we get to file
   systems)
 - `me me`: These two are, respectively, the user that owns the file, and the group that
   also owns the file. These are used by the file permissions we mentioned earlier. The
-  group is usually something different from the user, and signifies a set of users with
+  group is usually something different from the user and signifies a set of users with
   some important set of permissions.
 - `4096`: The size of the file in bytes
 - `Aug  9 18:28`: When the file was last modified
@@ -79,8 +79,7 @@ Let's take a look at one of the files. We'll be using the `cat` program:
 Hello, world!
 ```
 
-Basically, this prints out the file to standard output, which shows up on your
-terminal.
+This prints out the file to standard output, which shows up on your terminal.
 
 Now, let's access the directory `a_folder`:
 ```bash
@@ -97,7 +96,7 @@ With more text!
 We used the `cd` (short for change directory) command to go into `a_folder`. Notice
 this is using a *relative path*. In other words, the path is stated relative to the
 current working directory. You could have also specified it as an *absolute path*,
-which you can identify because it starts with a `/`, refering to the root directory
+which you can identify because it starts with a `/`, referring to the root directory
 `/`. As such, running `/home/me/a_folder` (notice this is the same output as the `pwd`
 command, which always outputs absolute paths).
 
@@ -137,11 +136,11 @@ Often throughout this course, you'll find yourself needing to write and edit cod
 inside the container. We'll talk about how you might be able to move files between your
 computer and the docker container, but you'll also need to be able to edit these files
 directly through your terminal. We've installed three editors in the container, `nano`,
-`emacs` and `vim`. If you've never used a terminal editor, stick to `nano`. I recommend
-you take the time to learn one of the other two once you become comfortable with nano,
-just because they're widely used and standard in the linux world, and they're quite
-rich in what they can do. From now on, I'll be refering to your editor of choice as
-`$EDITOR`.
+`emacs`, and `vim`. If you've never used a terminal editor, stick to `nano`. I
+recommend you take the time to learn one of the other two once you become comfortable
+with nano, just because they're widely used and standard in the Linux world and they're
+quite rich in what they can do. From now on, I'll be referring to your editor of choice
+as `$EDITOR`.
 
 **EXERCISE**: Modify the `a_file.md` file and add a line that simply says "Hello from
 the other side".
@@ -163,26 +162,26 @@ Hello from the other side
 
 This is a quick aside about how to get more information on programs. The internet can
 be a great source of information, but sometimes you want to get information about
-commands quicker from the terminal, or just need a quick references. For this, we have
+commands quicker from the terminal, or just need a quick reference. For this, we have
 two mechanisms:
 
-- Most terminal (aka CLI) programs, have a `--help` flag. Append that to a program to
+- Most terminal (aka CLI) programs have a `--help` flag. Append that to a program to
   get a short, summarised version of help for the program with basic usage information
   and a list of flags/arguments. For example, run `ls --help` to see what comes out
-- Many of the programs, specially those that come pre-installed on your system, have a
+- Many of the programs, especially those that come pre-installed on your system, have a
   man page. *man* here stands for manual. These are more long-form versions of the help
-  command, including detailed instructions and usecases, often with plenty of examples.
-  You can run `man man` to read the man page on how to use `man` (there's some useful
-  things there to check). Run `man ls` to get the more detailed information on how `ls`
-  works (you'll be surprised how many ways you can use that).
+  command, including detailed instructions and use cases, often with plenty of
+  examples. You can run `man man` to read the man page on how to use `man` (there are
+  some useful things there to check). Run `man ls` to get the more detailed information
+  on how `ls` works (you'll be surprised how many ways you can use that).
 
 
 ## Piping
 
-The last thing we'll discuss in this week, is piping. This is the operation of passing
-around the output of one program to the next, or to a file. This is basically how a lot
-of the work in Linux happens. The basic design philosophy is, create small programs that
-do minimal things, and chain input/output between programs to perform more complex
+The last thing we'll discuss this week is piping. This is the operation of passing
+around the output of one program to the next, or into a file. This is how a lot of the
+work in Linux happens. The basic design philosophy is, create small programs that do
+minimal things, and chain input/output between programs to perform more complex
 operations. This doesn't work out in practice for a lot of things, but for your
 terminal programs, this is the basic philosophy of how they were designed.
 
@@ -229,11 +228,12 @@ a `.txt`:
 -rw-r--r-- 1 me me 0 Aug  9 20:32 bfile.txt
 -rw-r--r-- 1 me me 0 Aug  9 20:32 cfile.txt
 ```
-So to sumarise here, the `|` basically means, send the output of `ls -l` as the input
-of `grep .txt`, and so all we see is the output of the final `grep` command. Notice,
-both these programs are basically running at the same time, but we're only chaining
-the output of one to the input of another, so you could have the command on the left
-constantly creating data and the one on the right constantly consuming that data.
+So to summarise here, the `|` is telling your shell to send the output of `ls -l` as
+the input of `grep .txt`, and so all we see is the output of the final `grep` command.
+Notice, both these programs are running at the same time, but we're only chaining the
+output of one to the input of another, so you could have the command on the left
+continuously creating data and the one on the right also continuously consuming that
+data.
 
 ## What's next?
 
