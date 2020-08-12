@@ -1,4 +1,4 @@
-# Exercise 1: Syscall convensions
+# Exercise 1: Syscall conventions
 
 An interesting question we left unanswered in the introduction is, how does your
 program jump over to the kernel and get it to execute your syscalls? In the diagram
