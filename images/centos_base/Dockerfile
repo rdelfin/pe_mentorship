@@ -1,12 +1,13 @@
 FROM centos:8
 ENV container docker
-RUN yum -y install man man-pages vim emacs nano;
 RUN yum -y install strace sudo;
 RUN yum -y install python3;
 RUN yum -y install words;
 RUN yum -y install gcc gcc-c++ make;
+RUN yum -y install man man-pages vim emacs nano tmux;
 RUN useradd -ms /bin/bash  me;
 RUN usermod -aG wheel me;
+ADD --chown=me home /home/me
 run echo "me ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
