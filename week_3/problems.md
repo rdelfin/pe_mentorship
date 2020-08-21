@@ -7,7 +7,7 @@ the question says otherwise. As one last reminder, you can start this up in dock
 using:
 
 ```
-$ docker run -it pementorship/w3_problems
+$ docker run  --cap-add=SYS_PTRACE -it pementorship/w3_problems
 ```
 
 **NOTE: DON'T SKIP AHEAD**. Read one question at a time, as the next question and
