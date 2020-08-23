@@ -28,11 +28,11 @@ int main() {
     }
 
     printf("Cleaning up...\n");
-    printf("Writing result to \"results.txt\"\n", counter);
+    printf("Writing result to \"results.txt\"\n");
     FILE* f = fopen("results.txt", "w");
     fprintf(f, "Iterations: %d\n", counter);
     fclose(f);
-    printf("Cleanup finished! Exiting\n", counter);
+    printf("Cleanup finished! Exiting\n");
 
     return 0;
 }
