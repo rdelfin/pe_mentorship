@@ -4,7 +4,7 @@ Now for the fun stuff! For these problems, we've provided the image
 `pementorship/w6_problems`. We recommend running it as:
 
 ```
-sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_problems
+$ sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_problems
 ```
 
 Mostly so that you can use `strace`. If a question requires a different invocation,

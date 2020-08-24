@@ -8,7 +8,7 @@ You can access it by running this docker command on your system (you should have
 installed by now):
 
 ```bash
-$ docker run -it pementorship/w2_ex1
+$ sudo docker run -it pementorship/w2_ex1
 ```
 
 You should see a prompt like this:
@@ -34,16 +34,17 @@ lives.
 Now for a few more commands. Run `ls`:
 ```bash
 [me@828abf2f1f04 ~]$ ls
-a_file.md  a_folder
+a_file.md  a_folder  data
 ```
 
 This shows you all the files in the current directory. Now run `ls -l` to see the
 long-form list of files:
 ```bash
 [me@9f2c81e1b90f ~]$ ls -l
-total 8
+total 12
 -rw-r--r-- 1 me me   14 Aug  9 12:43 a_file.md
-drwxr-xr-x 2 me me 4096 Aug  9 18:28 a_folder
+drwxr-xr-x 2 me me 4096 Aug  9 19:43 a_folder
+drwxr-xr-x 2 me me 4096 Aug  9 20:32 data
 ```
 
 Let's examine one of these lines:
@@ -73,17 +74,20 @@ Here, you can see the name of the file (or in this case, folder) to the very rig
 - `4096`: The size of the file in bytes
 - `Aug  9 18:28`: When the file was last modified
 
-Let's take a look at one of the files. We'll be using the `cat` program:
+Let's take a look at one of the files. We'll be using the `cat` program (short for
+concatenate):
 ```bash
 [me@c6677a8ee8f9 ~]$ cat a_file.md
 Hello, world!
 ```
 
-This prints out the file to standard output, which shows up on your terminal.
+This prints out the file to standard output, which shows up on your terminal. Now,
+the reason why it's called `cat` is because it can also concatenate multiple files
+together. However, if you only provide one file, it'll print it out by itself.
 
 Now, let's access the directory `a_folder`:
 ```bash
-[me@7d5a40e91479 ~]$ cd a_folder/
+[me@7d5a40e91479 ~]$ cd a_folder
 [me@7d5a40e91479 a_folder]$ pwd
 /home/me/a_folder
 [me@7d5a40e91479 a_folder]$ ls
@@ -110,7 +114,8 @@ and the `q` key to quit.
 
 Now if you want to go back to `/home/me`, you have three options. You can either `cd`
 to the absolute path, using `cd /home/me`. You can also use a special directory in
-every folder that points to the parent directory called `..`. As such, you can do:
+every folder that points to the parent directory called `..` (which you can see if you
+run `ls -a` from any directory). As such, you can do:
 ```bash
 [me@97b6a023a882 a_folder]$ pwd
 /home/me/a_folder
@@ -139,13 +144,13 @@ directly through your terminal. We've installed three editors in the container, 
 `emacs`, and `vim`. If you've never used a terminal editor, stick to `nano`. I
 recommend you take the time to learn one of the other two once you become comfortable
 with nano, just because they're widely used and standard in the Linux world and they're
-quite rich in what they can do. From now on, I'll be referring to your editor of choice
-as `$EDITOR`.
+quite rich in what they can do. From now on, I'll pretend you're using `nano`, but feel
+free to replace `nano` with `vim` or `emacs`.
 
 **EXERCISE**: Modify the `a_file.md` file and add a line that simply says "Hello from
 the other side".
 
-If you're not sure how to edit your file, simply run: `$EDITOR a_file.md` from your
+If you're not sure how to edit your file, simply run: `nano a_file.md` from your
 home directory (remember to make sure you're already there using `pwd` and `cd`). If
 you're using nano, you can just type away and move around like any other file editor.
 Once you're done press ^X (Ctrl+X) to exit and save (it'll ask for confirmation, just
@@ -158,7 +163,7 @@ Hello, world!
 Hello from the other side
 ```
 
-## Man pages and help
+## Help and man(ual) pages
 
 This is a quick aside about how to get more information on programs. The internet can
 be a great source of information, but sometimes you want to get information about
@@ -176,6 +181,18 @@ two mechanisms:
   on how `ls` works (you'll be surprised how many ways you can use that).
 
 
+## Standard Input, Standard Output, and Standard Error
+
+Before we continue, we need to discuss three special "files": standard input, standard
+output and standard error. These are three special "files" (or more accurately file
+descriptors) which represent standard, main input, output, and error output channel
+for your program. When things are setup normally, standard input is what you get when
+you type in things into the terminal. Standard output and standard error are both
+printed out straight to the terminal, but can be separted out using piping and
+redirection (a topic for later on). They're important to keep in mind because whenever
+you do things like call `printf()` from your program, it'll send data to standard
+output. Standard input gets used by functions like `gets()` and `scanf()`.
+
 ## Piping
 
 The last thing we'll discuss this week is piping. This is the operation of passing
@@ -185,7 +202,7 @@ minimal things, and chain input/output between programs to perform more complex
 operations. This doesn't work out in practice for a lot of things, but for your
 terminal programs, this is the basic philosophy of how they were designed.
 
-Let's first talk about a little program called `grep`. `grep` lets you search through
+Let's first talk about a little program called `grep`. It lets you search through
 files. If you run `grep --help`, you can see:
 ```bash
 [me@7d5a40e91479 ~]$ grep --help
@@ -205,7 +222,7 @@ search over the output of another program. Let's try this:
 ```bash
 [me@f5d3dd0599d8 ~]$ ls
 a_file.md  a_folder  data
-[me@f5d3dd0599d8 ~]$ cd data/
+[me@f5d3dd0599d8 ~]$ cd data
 [me@f5d3dd0599d8 data]$ ls -l
 total 0
 -rw-r--r-- 1 me me 0 Aug  9 20:32 afile.md

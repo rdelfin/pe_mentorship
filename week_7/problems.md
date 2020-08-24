@@ -4,7 +4,7 @@ Once more, we're back to some interesting problems. This week, following our usu
 pattern, use the `pementorship/w7_problems`. We again advise running it with:
 
 ```
-sudo docker run -it --cap-add=SYS_PTRACE pementorship/w7_problems
+$ sudo docker run -it --cap-add=SYS_PTRACE pementorship/w7_problems
 ```
 
 We also recommend using `tmux` again, but the image won't launch it by default.

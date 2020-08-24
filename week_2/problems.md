@@ -8,7 +8,7 @@ can discuss them with your mentor.
 For these, use the image called `pementorship/w2_problems`. As a reminder, you just
 need to run:
 ```
-docker run -it pementorship/w2_problems
+$ sudo docker run -it pementorship/w2_problems
 ```
 You might need to `docker pull` it first.
 

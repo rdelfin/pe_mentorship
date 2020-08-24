@@ -13,7 +13,7 @@ For this exercise, we'll be using the `pementorship/w3_ex2` image. Again, if you
 remember how to start it:
 
 ```
-docker run -it pementorship/w3_ex2
+$ sudo docker run -it pementorship/w3_ex2
 ```
 
 ## Mystery binary

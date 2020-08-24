@@ -14,7 +14,7 @@ Much like before, you can find the image for this exercise in `w6_ex2`, but you 
 run it in the following way to allow `strace` to run properly:
 
 ```bash
-sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_ex1
+$ sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_ex1
 ```
 
 ## Clean-up on end

@@ -11,7 +11,7 @@ For this exercise, you'll be using the `pementorship/w6_ex1` image. We'll need s
 special permissions to be able to run `strace` with the `-p` flag, so run:
 
 ```bash
-sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_ex1
+$ sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_ex1
 ```
 
 For this exercise, we'll be using tmux. If you're not familiar with it, we'll put the
