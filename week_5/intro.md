@@ -7,7 +7,7 @@ Programmer's Perspective". I highly encourage you to buy a copy for yourself if 
 and Linux are something you're interested in. This book gave me a unique perspective on
 how computers work that I wouldn't have gotten elsewhere. However, if this is outside
 your budget, you can find
-[this link](https://github.com/smellslikekeenspirit/an-askreddit-list-of-compsci-books/blob/master/Randal%20E.%20Bryant%2C%20David%20R.%20O%E2%80%99Hallaron%20-%20Computer%20Systems.%20A%20Programmer%E2%80%99s%20Perspective%20%5B3rd%20ed.%5D%20(2016%2C%20Pearson%29.pdf)
+[this link](https://github.com/smellslikekeenspirit/an-askreddit-list-of-compsci-books/blob/master/Randal%20E.%20Bryant%2C%20David%20R.%20O%E2%80%99Hallaron%20-%20Computer%20Systems.%20A%20Programmer%E2%80%99s%20Perspective%20%5B3rd%20ed.%5D%20%282016%2C%20Pearson%29.pdf)
 which we'll never speak of again. We'll be talking about chapters 6, and mostly 9
 (respectively about the memory hierarchy and virtual memory).
 
