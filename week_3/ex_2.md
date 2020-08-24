@@ -1,7 +1,7 @@
 # Exercise 2: Finding syscalls
 
 As we've already discussed, syscalls are the only way processes have to talk to the
-world outside their abtraction box. It's how they ask the OS to perform operations
+world outside their abstraction box. It's how they ask the OS to perform operations
 outside their sandbox. As such, if you could peer into the syscalls that a process
 performs, you'd probably be able to figure out what said process is doing overall, if
 it's sending data over the network, reading or modifying certain files, and many other
@@ -35,7 +35,7 @@ gcc mystery.c -o mystery
 [me@35a412f61df0 ~]$
 ```
 
-Huh... Did it even do anything? We see not output, and even if we take a look at the
+Huh... Did it even do anything? We see no output, and even if we take a look at the
 directory where we ran this:
 ```
 [me@35a412f61df0 ~]$ ls

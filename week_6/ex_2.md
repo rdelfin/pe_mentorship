@@ -4,13 +4,13 @@ Something we touched on briefly in the last exercise was signal handlers. Most s
 let you write a handler for them that executes a piece of code instead of whatever the
 default behaviour is for the signal is. A common use-case for signals is to communicate
 messages between processes. The signal is used to tell the other process that an event
-happened. Because of this, you'll often see signals reffered to as a form of
-*Inter-Process Communication*, or IPC. In this topic, it's important to note that
-there's two signals you'll never be able to handle: `SIGKILL` and `SIGSTOP`.
+happened. Because of this, you'll often see signals referred to as a form of
+*Inter-Process Communication* or IPC. In this topic, it's important to note that
+there are two signals you'll never be able to handle: `SIGKILL` and `SIGSTOP`.
 
 ## Setup
 
-Much like before, you can find the image for thid exercise in `w6_ex2`, but you should
+Much like before, you can find the image for this exercise in `w6_ex2`, but you should
 run it in the following way to allow `strace` to run properly:
 
 ```bash
@@ -92,9 +92,9 @@ Makefile  cleanup  cleanup.c  kill_ign  kill_ign.c  results.txt  stop_ign  stop_
 Iterations: 4
 ```
 
-As you can see, it counts up and when you press `Ctrl+C` to send a `SIGINT` (signaled
+As you can see, it counts up and when you press `Ctrl+C` to send a `SIGINT` (signalled
 by the `^C` before the `"Cleaning up..."`), it starts doing cleanup by writing the
-number of iterations that were acheieved to `results.txt` in the current directory.
+number of iterations that were achieved to `results.txt` in the current directory.
 
 Let's look again at how it's achieved:
 
@@ -109,14 +109,14 @@ sigaction(SIGINT, &sig_action, NULL);
 sigaction(SIGTERM, &sig_action, NULL);
 ```
 
-Here, we setup the signal handlers. We do this making use of the `sigaction()`, which
+Here, we set up the signal handlers. We do this making use of the `sigaction()`, which
 lets you specify what to do when a system call is received. In this case, we're simply
 setting a handler for the syscall, but you can set special parameters to make the
 signal be completely ignored, or to revert to the "default" handler for a signal.
 
 ## Ignoring `SIGSTOP` or `SIGKILL`
 
-I've created two programs, `stop_ign.c` and `kill_ign.c` (both of these got build into
+I've created two programs, `stop_ign.c` and `kill_ign.c` (both of these got built into
 `stop_ign` and `kill_ign` when you ran `make` earlier). They make a call to
 `sigaction()` to ignore the `SIGSTOP` and `SIGKILL` signals respectively. This means
 that, if we can handle the signals, we should be able to ignore those signals and
@@ -177,7 +177,7 @@ RETURN VALUE
        indicate the error.
 ```
 
-This is a common way of signaling error on syscalls: by placing it in the return value
+This is a common way of signalling error on syscalls: by placing it in the return value
 and using `errorno` to set the failure (you can take a look at `man errorno` for more
 information on how to figure out failures during syscalls, as well as a full listing of
 all error numbers, including some interesting notes on common pitfalls when using it).

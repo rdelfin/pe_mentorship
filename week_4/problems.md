@@ -1,4 +1,4 @@
-# Problems
+# Week 4: Problems
 
 ## Setup
 
@@ -20,7 +20,7 @@ this week, implement the following things using your language of choice:
 3. Calculate the average height of people in the dataset using the language of your
    choice.
 4. Averages are often not the only useful statistic when you're looking at data.
-   Calculate the standard deviation, 5th percentile, 95th percentile and 99th
+   Calculate the standard deviation, 5th percentile, 95th percentile, and 99th
    percentile of the heights? If you're not sure how to calculate those, take a look at
    this: https://en.wikipedia.org/wiki/Percentile (all you have to do is order the list
    and find the value at which the given percent of values is below that threshold).
@@ -51,9 +51,9 @@ logs under `/var/facebook/logs/hphp/logmaschine`):
 [...]
 ```
 
-Basically, every log in this folder will follow the format `YYYY-MM-DD_*.binlog`, where
-YYYY, MM and DD are respectively the year, month and day for the log file. Every file
-that doesn't follow this format should be ignored and kept as is by your program.
+Every log in this folder will follow the format `YYYY-MM-DD_*.binlog`, where YYYY,
+MM, and DD are respectively the year, month, and day for the log file. Every file that
+doesn't follow this format should be ignored and kept as is by your program.
 
 1. Write a piece of code that deletes all files older than 5 days old, based on the
    date in the file name. Your program should work recursively in every folder, and

@@ -2,7 +2,7 @@
 
 In this exercise, we're gonna look at how bash handles and works with signals in its
 child processes. There's a handful of really useful signals that we'll look at;
-`SIGTERM`, `SIGKILL`, `SIGTSTP`, `SIGCONT`, `SIGHUP` and `SIGCHLD`. We'll discuss what
+`SIGTERM`, `SIGKILL`, `SIGTSTP`, `SIGCONT`, `SIGHUP`, and `SIGCHLD`. We'll discuss what
 they do, when they're used, and how to get around their effects (and when you can't).
 
 ## Setup
@@ -15,7 +15,7 @@ sudo docker run -it --cap-add=SYS_PTRACE pementorship/w6_ex1
 ```
 
 For this exercise, we'll be using tmux. If you're not familiar with it, we'll put the
-commands needed to navigate and move around here, but we strongly advise you take a
+commands needed to navigate and move around here, but we strongly advise you to take a
 look at [this short tutorial](https://linuxize.com/post/getting-started-with-tmux/)
 first.
 
@@ -38,7 +38,7 @@ Hello: 3
 Let's try attaching strace to it. Press the keys `Ctrl+b %`. This will create a new
 vertical split in the window with a new terminal. You can move between then with
 `Ctrl+b ←` and `Ctrl+b →`. On the new terminal, run `ps axf`. This will print out a
-**process tree**. Basically, a tree-like representation of the processes running on the
+**process tree**, or a tree-like representation of the processes running on the
 container. Each process has a parent, which is usually the process that created it.
 We'll talk more about this in a future module. For now, you should see something like
 this:
@@ -57,7 +57,7 @@ this:
 
 Interestingly, you can see two `tmux` processes here. We're going to focus on the one
 with all the child processes. This is the instance of tmux you're seeing on your
-terminal. Notice there's two instances of bash (your shell), and each one's running a
+terminal. Notice there are two instances of bash (your shell), and each one's running a
 program, one has the `./loop`, and the other has the instance of `ps` that output the
 tree.
 
@@ -75,10 +75,10 @@ nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffd878626b0) = 0
 [...]
 ```
 
-As you can see, we're basically making two syscalls over and over again, `write()` and
+As you can see, we're making two syscalls over and over again, `write()` and
 `nanosleep()`, which just tells us we're writing to the terminal, and sleeping for a
-second, over and over again. However, this is kind of noisy, we really only care about
-the signals, not the syscalls, so you can filter for only signals using the `-e signal`
+second, over and over again. However, this is kind of noisy, we only care about the
+signals, not the syscalls, so you can filter for only signals using the `-e signal`
 flag:
 
 ```bash
@@ -93,9 +93,9 @@ we look at those though, we need to look at a quick concept: foreground and back
 processes.
 
 Bash lets you run programs in two different modes, foreground and background mode. When
-you run a program like we have done so far, it will default to running in foreground
+you run a program as we have done so far, it will default to running in foreground
 mode. What that means is that, while the program is running, the shell is locked up and
-you cannot run any other commands. Bash will also redirect anything you type in to the
+you cannot run any other commands. Bash will also redirect anything you type into the
 standard input of the foreground process.
 
 On the flip side, if you add a `&` at the end of any commands you run in bash, it'll
@@ -106,14 +106,14 @@ said, you'll still see the output of the program in your shell.
 ### Pausing and resuming processes
 
 Now that we have the concept out of the way, let's talk about how you would apply this.
-One think people commonly want to do in bash is turn a foreground process into a
-background one. To do this, bash provides the `bg` command which, if you provide a
-process, it will start running it in the background. However, to do this with a running
-process, we need to somehow pause it so we can type in the command. For this, we can
-run `Ctrl+Z`. This will pause execution of the foreground process (we'll see how in a
-sec), and print out the job ID of the process (think of the job ID as a process ID that
-identifies programs inside an instance of bash instead of across a whole system). Then
-we can run `bg %1`, where 1 here is the job ID we mentioned earlier:
+One thing people commonly want to do in bash is to turn a foreground process into a
+background one. To do this, bash provides the `bg` command which will start running the
+given process in the background. However, to do this with a running process, we need to
+somehow pause it so we can type in the command. For this, we can run `Ctrl+Z`. This
+will pause execution of the foreground process (we'll see how in a sec), and print out
+the job ID of the process (think of the job ID as a process ID that identifies programs
+inside an instance of bash instead of across a whole system). Then we can run `bg %1`,
+where 1 here is the job ID we mentioned earlier:
 
 ```bash
 [...]
@@ -152,10 +152,10 @@ strace: Process 57 attached
 
 Notice two signals got sent. `SIGTSTP` and `SIGCONT`. The first was sent when you
 pressed `Ctrl+Z`, while the second got sent when we ran `fg`. `SIGTSTP` is a special
-signal that makes a processs stop running. It's one of the few signals that you cannot
-handle (in other words, you can't change the behaviour of receving the signal). It will
-always, unconditionally, pause the process. If you follow it up with a `SIGCONT` (which
-is what happened) it'll make the process resume execution normally.
+signal that makes a process stop running. It's one of the few signals that you cannot
+handle (in other words, you can't change the behaviour of receiving the signal). It
+will always, unconditionally, pause the process. If you follow it up with a `SIGCONT`
+(which is what happened) it'll make the process resume execution normally.
 
 ### Killing processes
 
@@ -180,7 +180,7 @@ window that was running `strace` on that program:
 ```
 
 So, running the `kill` command will send a `SIGTERM` signal to the process in question,
-and it will subsequently be killed. Interestingly , the `kill` command can be used to
+and it will subsequently be killed. Interestingly, the `kill` command can be used to
 send any signal, not only `SIGTERM`. Confusingly, not every signal it sends will kill
 the target process. Read `man kill` to learn more about how to send those signals.
 
@@ -250,12 +250,12 @@ bit more in the next exercise.
 
 Let's talk about how to kill the process when you find yourself in a situation like
 this. It's very common for programs to override the handlers for `SIGTERM` and `SIGINT`
-to do cleanup before killing the process, but often times, programs can get so stuck
-that even the cleanup ends up stuck and the program never terminates, so for this we
+to do cleanup before killing the process, but oftentimes, programs can get so stuck
+that even the cleanup ends up stuck and the program never terminates, so for this, we
 need to sent `SIGKILL`. `SIGKILL` is another signal that cannot be interrupted or
 handled, and will always, unconditionally and immediately kill processes. This can be
 often dangerous (it might kill a process while it's doing critical work, or leave a
-file half-written and so currupted), but desperate times call for deparate measures.
+file half-written and so corrupted), but desperate times call for desperate measures.
 
 You could send this signal, but let's send it from the same terminal, using that
 `SIGTSTP` trick we learned earlier (reminder, use `Ctrl+Z`):
@@ -280,11 +280,11 @@ used for said signal). You could have also used `-SIGKILL`.
 ## The death of bash
 
 One interesting thing you'll notice is that every program you run in bash seems to be
-attached to bash in some way. That's where it's printing out to, job id's identify it
-as part of that bash instance... One of the most interesting aspects of this connection
+attached to bash in some way. That's where it's printing out to, job ids identify it
+as part of that bash instance. One of the most interesting aspects of this connection
 between bash and the processes you run inside of it is is what happens to the child
-processes when bash dies. Let's take a look at it. Start up `loop` again on one
-terminal and attach strace on the other:
+processes when bash dies. Let's take a look at it. Start `loop` again on one terminal
+and attach strace on the other:
 
 ```bash
 [me@ac1f6644c90f:~] $ ./loop

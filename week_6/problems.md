@@ -1,4 +1,4 @@
-# Week 6 Problems
+# Week 6: Problems
 
 Now for the fun stuff! For these problems, we've provided the image
 `pementorship/w6_problems`. We recommend running it as:
@@ -33,8 +33,8 @@ running `my_daemon` from one of your tmux panes, closing it, and on a second pan
 running `tail -f /tmp/results1.txt`. If your solution works, you should see your daemon
 process still writing to the file after the shell it was running under is gone.
 
-**HINT**: Take a look at ex1. There's some useful discussion about relevant signal(s)
-there.
+**HINT**: Take a look at ex1. There's some useful discussion about the relevant
+signal(s) there.
 
 ## Question 2
 

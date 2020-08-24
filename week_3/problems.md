@@ -1,4 +1,4 @@
-# Problems
+# Week 3: Problems
 
 ## Setup
 
@@ -30,7 +30,7 @@ The way we started docker made it so that the network port 8080 on your computer
 forwards to port 8080 on the container.
 
 1. Go to [http://localhost:8080/](http://localhost:8080/) on the computer you started
-   the container in. What do you see? What if you go to other URL's in that site like
+   the container in. What do you see? What if you go to other URLs on that site like
    [http://localhost:8080/random](http://localhost:8080/random)?
 
 2. What's the PID (process ID) of the flask process?
@@ -40,7 +40,7 @@ forwards to port 8080 on the container.
 
 3. Attach strace to the process by running `sudo strace -p $PID` (where `$PID` is the
    PID of the flask process). Don't open the site on your browser. What's flask doing
-   when no one's sending any http requests?
+   when no one's sending any HTTP requests?
 
 4. In the last question, you should have seen a lot of `poll()` syscalls. What does
    that syscall do? Why would it be useful for a webserver to call that intermittently?
@@ -48,27 +48,27 @@ forwards to port 8080 on the container.
    **HINT**: Use `man 2 poll` and search the internet for how TCP sockets are
    established.
 
-5. Next up, let's see what happens when you actually request the site. Open a browser
-   again to [http://localhost:8080/](http://localhost:8080/). What happens in your
-   `strace` invocation when you load the site? What syscalls do you see?
+5. Next up, let's see what happens when you request the site. Open a browser again to
+   [http://localhost:8080/](http://localhost:8080/). What happens in your `strace`
+   invocation when you load the site? What syscalls do you see?
    1. What happened to `poll()` when you sent the request?
    2. Interestingly, you won't be able to find a syscall sending a message back over
       the network. Can you figure out why? Are there any syscalls there that could be
       making it so that you can't see the message being sent back?
 
-As mentioned in the last question, you won't be able to see the syscall that actually
-sends back the HTTP response to your browser. Let's take a quick parouse through what a
-standard socket connection looks like in Linux. There's basically 4 syscalls: `poll()`,
+As mentioned in the last question, you won't be able to see the syscall that sends back
+the HTTP response to your browser. Let's take a quick trip through what a standard
+socket connection looks like in Linux. There's basically 4 syscalls: `poll()`,
 `accept()`, `recv()`, and `send()`. Once you've set your socket connection up on a
 given port (here using the TCP protocol), you have your server continuously running
-`poll()`, which will wait on the socket for a message saying there's a new incomming
-connection. Once one's received, you run `accept()` on that incomming connection to
-tell the OS that you're ready to start the socket connection. Finally, we can use
-`recv()` and `send()` on that connection to send data back and forth.
+`poll()`, which will wait on the socket for a message saying there's a new incoming
+connection. Once one's received, you run `accept()` on that incoming connection to tell
+the OS that you're ready to start the socket connection. Finally, we can use `recv()`
+and `send()` on that connection to send data back and forth.
 
 To handle every connection separately, flask starts up a new child process that
-actually runs the `recv()` and `send()` syscalls for a given connection. This is the
-`clone()` syscall you're seeing. Now that we know that
+runs the `recv()` and `send()` syscalls for a given connection. This is the `clone()`
+syscall you're seeing. Now that we know that
 
 6. Rerun `strace`, but add the `-f` flag at the end. This will also trace child
    processes. Can you identify the syscalls that are being used to send the data back

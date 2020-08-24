@@ -11,13 +11,13 @@ We also recommend using `tmux` again, but the image won't launch it by default.
 
 ## Problem 1
 
-This week, we looked at the `fork()`, `exec()` and `wait()` system calls to start off
-new processes.
+This week, we looked at the `fork()`, `exec()` and `wait()` system calls to start new
+processes.
 
 1. With this knowledge, implement a simple program that, using the arguments passed in
    from the terminal, executes a program and waits for said program to finish, and then
-   exits. Basically, a wrapper for a program. If your program is called `minishell`,
-   you can imagine running:
+   exits. In essence, you're writing a wrapper for a program. If your program is called
+   `minishell`, you can imagine running:
 
    ```
    $ ./minishell ls -l
@@ -42,8 +42,8 @@ new processes.
 ## Problem 2
 
 On this problem, we're taking a look a little at what bash does when it executes
-programs. Start up the container, and open two tmux panes. Attach an `strace` instance
-on one pane to the bash process runnin on the other one (you can print the PID of a
+programs. Startup the container, and open two tmux panes. Attach an `strace` instance
+on one pane to the bash process running on the other one (you can print the PID of a
 bash process by running `echo $$`).
 
 1. Run the command `ls -l *.c` and watch the output of strace. Can you identify where
